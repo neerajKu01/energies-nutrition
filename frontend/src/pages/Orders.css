@@ -1,0 +1,73 @@
+.orders-page { padding: 40px 0 80px; }
+
+.orders-title {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+}
+.orders-title span { color: var(--gold); }
+
+.orders-list { display: flex; flex-direction: column; gap: 20px; }
+
+.order-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.order-card:hover { border-color: var(--gold); }
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.order-id { font-weight: 700; font-size: 15px; font-family: var(--font-display); letter-spacing: 1px; }
+.order-date { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+.order-status {
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.order-items-preview { padding: 20px 24px; display: flex; flex-direction: column; gap: 12px; }
+
+.oip-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.oip-item img {
+  width: 56px;
+  height: 56px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: var(--dark2);
+}
+
+.oip-item p { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+.oip-item span { font-size: 12px; color: var(--muted); }
+
+.more-items { font-size: 12px; color: var(--muted); font-style: italic; }
+
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+  background: var(--dark2);
+}
+
+.order-total { font-size: 14px; color: var(--muted); }
+.order-total strong { color: var(--white); font-family: var(--font-display); font-size: 18px; }

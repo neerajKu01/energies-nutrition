@@ -1,0 +1,52 @@
+
+/* Order filter tabs */
+.order-filter-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.filter-tab:hover { border-color: var(--gold); color: var(--white); }
+.filter-tab.active { border-color: var(--gold); color: var(--gold); background: rgba(245,166,35,0.08); }
+
+.tab-count {
+  background: var(--border);
+  color: var(--white);
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.filter-tab.active .tab-count { background: var(--gold); color: var(--black); }
+
+/* Status select in table */
+.status-select {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  color: var(--white);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.status-select:focus { border-color: var(--gold); }
