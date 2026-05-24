@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <h2 className="footer-logo">Energie<span>Nutrition</span></h2>
+            <h2 className="footer-logo">SUPP<span>X</span></h2>
             <p>Science-backed supplements for peak performance. 100% authentic, directly delivered.</p>
             <div className="footer-socials">
               <a href="#" aria-label="Instagram">📸</a>
@@ -36,14 +36,14 @@ export default function Footer() {
 
           <div className="footer-col">
             <h4>Contact</h4>
-            <p>📧 info@energienutrition.co.in</p>
-            <p>📞 +91 6395913176</p>
+            <p>📧 info@suppx.co.in</p>
+            <p>📞 +91 85069 30085</p>
             <p>🕐 Mon–Sat: 10am–7pm</p>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} energienutrition Vitamins & Supplements Store. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} SuppX Vitamins & Supplements Store. All rights reserved.</p>
           <div className="payment-icons">
             <span>UPI</span>
             <span>Cards</span>

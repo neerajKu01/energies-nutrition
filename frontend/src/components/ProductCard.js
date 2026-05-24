@@ -15,14 +15,14 @@ export default function ProductCard({ product }) {
 
       <Link to={`/product/${product._id}`} className="pc-image-wrap">
         <img
-          src={product.images?.[0] || 'https://placehold.co/300x300/1a1a1a/f5a623?text=energienutrition'}
+          src={product.images?.[0] || 'https://placehold.co/300x300/1a1a1a/f5a623?text=SuppX'}
           alt={product.name}
           className="pc-image"
         />
       </Link>
 
       <div className="pc-body">
-        <p className="pc-brand">{product.brand || 'energienutrition'}</p>
+        <p className="pc-brand">{product.brand || 'SuppX'}</p>
         <Link to={`/product/${product._id}`}>
           <h3 className="pc-name">{product.name}</h3>
         </Link>

@@ -16,7 +16,7 @@ let mockCart = {
 };
 let mockOrders = [...MOCK_ORDERS];
 
-const getStoredUser = () => JSON.parse(localStorage.getItem('energienutrition_user') || 'null');
+const getStoredUser = () => JSON.parse(localStorage.getItem('suppx_user') || 'null');
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 const parseUrl = (url) => {
@@ -43,6 +43,9 @@ const mockApi = {
 
     // /cart
     if (url === '/cart') return { data: mockCart };
+
+    // /payment/key
+    if (url === '/payment/key') return { data: { keyId: 'rzp_test_DEMO_KEY' } };
 
     // /orders/my  (must come BEFORE /orders/:id)
     if (url === '/orders/my') return { data: mockOrders };
@@ -111,10 +114,10 @@ const mockApi = {
 
     // /auth/login
     if (url === '/auth/login') {
-      if (body.email === 'demo@energienutrition.com' && body.password === 'demo123') {
+      if (body.email === 'demo@suppx.com' && body.password === 'demo123') {
         return { data: MOCK_USER };
       }
-      throw { response: { status: 401, data: { message: 'Invalid credentials — use demo@energienutrition.com / demo123' } } };
+      throw { response: { status: 401, data: { message: 'Invalid credentials — use demo@suppx.com / demo123' } } };
     }
 
     // /auth/register
@@ -158,6 +161,36 @@ const mockApi = {
       };
       mockOrders.unshift(newOrder);
       return { data: newOrder };
+    }
+
+    // /payment/create-order
+    if (url === '/payment/create-order') {
+      const order = mockOrders.find((o) => o._id === body.orderId);
+      return { data: {
+        razorpayOrderId: 'order_mock_' + Date.now(),
+        amount:   order ? order.totalPrice * 100 : 99900,
+        currency: 'INR',
+        keyId:    'rzp_test_DEMO_KEY',
+      }};
+    }
+
+    // /payment/verify  — marks order paid in mock state
+    if (url === '/payment/verify') {
+      const order = mockOrders.find((o) => o._id === body.orderId);
+      if (order) {
+        order.paymentStatus     = 'paid';
+        order.orderStatus       = 'processing';
+        order.razorpayPaymentId = body.razorpay_payment_id || 'pay_mock_demo';
+        order.paidAt            = new Date().toISOString();
+      }
+      return { data: { success: true, message: 'Payment verified (demo)', order } };
+    }
+
+    // /payment/refund
+    if (url === '/payment/refund') {
+      const order = mockOrders.find((o) => o._id === body.orderId);
+      if (order) { order.paymentStatus = 'refunded'; order.orderStatus = 'cancelled'; }
+      return { data: { success: true, message: 'Refund initiated (demo)', order } };
     }
 
     // /products/:id/reviews
@@ -217,7 +250,7 @@ const mockApi = {
     if (url === '/auth/profile') {
       const stored = getStoredUser() || MOCK_USER;
       const updated = { ...stored, ...body, token: stored.token };
-      localStorage.setItem('energienutrition_user', JSON.stringify(updated));
+      localStorage.setItem('suppx_user', JSON.stringify(updated));
       return { data: updated };
     }
 

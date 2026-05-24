@@ -33,9 +33,10 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="nav-top">
         <div className="container nav-inner">
-         <Link to="/" className="nav-logo">
-            <img src="/logo.png" alt="Energie Nutrition" className="logo-img" />
+          <Link to="/" className="nav-logo">
+            SUPP<span>X</span>
           </Link>
+
           <form className="nav-search" onSubmit={handleSearch}>
             <input
               type="text"

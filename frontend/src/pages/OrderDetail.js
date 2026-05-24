@@ -99,8 +99,31 @@ export default function OrderDetail() {
             <div className="summary-row"><span>Shipping</span><span>{order.shippingPrice === 0 ? <span style={{ color: 'var(--gold)' }}>FREE</span> : `₹${order.shippingPrice}`}</span></div>
             <div className="summary-row total"><span>Total Paid</span><span>₹{order.totalPrice?.toLocaleString()}</span></div>
             <div className="od-payment-info">
-              <p>💳 Payment: <strong>{order.paymentMethod}</strong></p>
-              <p>Status: <span style={{ color: order.paymentStatus === 'paid' ? '#80ed99' : 'var(--muted)' }}>{order.paymentStatus?.toUpperCase()}</span></p>
+              <p>💳 Payment Method: <strong>{order.paymentMethod}</strong></p>
+              <p>
+                Payment Status:{' '}
+                <span style={{
+                  color: order.paymentStatus === 'paid' ? '#80ed99'
+                       : order.paymentStatus === 'failed' ? '#e63946'
+                       : order.paymentStatus === 'refunded' ? '#4cc9f0'
+                       : 'var(--muted)'
+                }}>
+                  {order.paymentStatus === 'paid'     ? '✅ PAID'
+                   : order.paymentStatus === 'failed'  ? '❌ FAILED'
+                   : order.paymentStatus === 'refunded'? '↩️ REFUNDED'
+                   : '⏳ PENDING'}
+                </span>
+              </p>
+              {order.razorpayPaymentId && (
+                <p style={{ fontSize: 11, color: 'var(--muted)', wordBreak: 'break-all' }}>
+                  Razorpay ID: <code style={{ color: 'var(--gold)', fontSize: 11 }}>{order.razorpayPaymentId}</code>
+                </p>
+              )}
+              {order.paidAt && (
+                <p style={{ fontSize: 12, color: 'var(--muted)' }}>
+                  Paid at: {new Date(order.paidAt).toLocaleString('en-IN')}
+                </p>
+              )}
             </div>
           </div>
         </div>

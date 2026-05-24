@@ -14,7 +14,7 @@ const axiosApi = axios.create({
 });
 
 axiosApi.interceptors.request.use((config) => {
-  const user = JSON.parse(localStorage.getItem('energienutrition_user') || 'null');
+  const user = JSON.parse(localStorage.getItem('suppx_user') || 'null');
   if (user?.token) config.headers.Authorization = `Bearer ${user.token}`;
   return config;
 });
@@ -23,7 +23,7 @@ axiosApi.interceptors.response.use(
   (res) => res,
   (err) => {
     if (err.response?.status === 401) {
-      localStorage.removeItem('energienutrition_user');
+      localStorage.removeItem('suppx_user');
       window.location.href = '/login';
     }
     return Promise.reject(err);

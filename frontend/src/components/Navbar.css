@@ -24,12 +24,6 @@
 }
 .nav-logo span { color: var(--gold); }
 
-.logo-img{
-  height: 157px;
-  width: auto;
-  object-fit: contain;
-}
-
 .nav-search {
   flex: 1;
   max-width: 520px;

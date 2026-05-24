@@ -36,7 +36,7 @@ export default function Cart() {
               <div key={item._id} className="cart-item">
                 <Link to={`/product/${item.product?._id}`}>
                   <img
-                    src={item.product?.images?.[0] || 'https://placehold.co/100x100/1a1a1a/f5a623?text=energienutrition'}
+                    src={item.product?.images?.[0] || 'https://placehold.co/100x100/1a1a1a/f5a623?text=SuppX'}
                     alt={item.product?.name}
                     className="ci-image"
                   />

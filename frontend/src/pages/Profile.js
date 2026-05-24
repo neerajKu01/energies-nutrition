@@ -36,7 +36,7 @@ export default function Profile() {
       if (form.password) payload.password = form.password;
 
       const { data } = await api.put('/auth/profile', payload);
-      localStorage.setItem('energienutrition_user', JSON.stringify({ ...data, token: data.token }));
+      localStorage.setItem('suppx_user', JSON.stringify({ ...data, token: data.token }));
       toast.success('Profile updated!');
     } catch (err) {
       toast.error(err.response?.data?.message || 'Update failed');

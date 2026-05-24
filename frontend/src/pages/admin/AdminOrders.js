@@ -25,6 +25,17 @@ export default function AdminOrders() {
 
   useEffect(() => { fetchOrders(); }, []);
 
+  const handleRefund = async (orderId) => {
+    if (!window.confirm('Initiate full refund for this order?')) return;
+    try {
+      await api.post('/payment/refund', { orderId });
+      toast.success('Refund initiated successfully');
+      fetchOrders();
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Refund failed');
+    }
+  };
+
   const updateStatus = async (orderId, status, trackingNumber) => {
     setUpdatingId(orderId);
     try {

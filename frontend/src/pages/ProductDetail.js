@@ -53,7 +53,7 @@ export default function ProductDetail() {
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
     : 0;
 
-  const images = product.images?.length ? product.images : ['https://placehold.co/600x600/1a1a1a/f5a623?text=energienutrition'];
+  const images = product.images?.length ? product.images : ['https://placehold.co/600x600/1a1a1a/f5a623?text=SuppX'];
 
   return (
     <div className="pd-page">
@@ -86,7 +86,7 @@ export default function ProductDetail() {
 
           {/* Info */}
           <div className="pd-info">
-            <p className="pd-brand">{product.brand || 'energienutrition'}</p>
+            <p className="pd-brand">{product.brand || 'SuppX'}</p>
             <h1 className="pd-name">{product.name}</h1>
 
             {product.rating > 0 && (
